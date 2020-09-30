@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    </body>
+    <script>
+        function computerPlay(){
+            var word = ["ROCK", "PAPER","SCISSORS"];
+            return word[Math.floor(Math.random()*word.length)];
+        }
+
+        function singleRound(playerSelection, computerSelection){
+            
+            playerSelection = playerSelection.toUpperCase();
+            var winner;
+            
+            if (playerSelection == computerSelection) {
+                winner = "Tie"; 
+            }
+            else if ((playerSelection == "SCISSORS") && (computerSelection == "ROCK")||
+                (playerSelection == "PAPER") && (computerSelection == "SCISSORS") ||
+                (playerSelection == "ROCK") && (computerSelection == "PAPER")) {
+                winner = "Computer";
+            }
+            else{
+                winner = "Player";
+
+            }
+            return winner;
+        }
+        function game(){
+            var i ;
+            var playerCounter=0;
+            var computerCounter = 0;
+            playerSelection = prompt("Make a choice: Rock, Scissors or Paper?")
+            for( i = 0; i < 5;i++){
+                var computerSelection = computerPlay();
+                var winner = singleRound(playerSelection,computerSelection);
+                console.log(winner);
+                if (winner == "Player"){
+                    playerCounter++;
+                }
+                else if(winner =="Computer"){
+                    computerCounter++;
+                }
+                else { //if it's a tie
+                    playerCounter++;
+                    computerCounter++;
+                }
+                
+            }
+            console.log("RESULTS: \n Player "+playerCounter+ " x "+ computerCounter+" Computer");
+        }
+        
+
+    </script>
+</html>    
